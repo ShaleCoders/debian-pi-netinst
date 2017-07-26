@@ -1,0 +1,7 @@
+/bootfs/
+/packages/
+/installer*.cpio*
+/debian-pi-netinst-*.zip
+/debian-pi-netinst-*.img
+/debian-pi-netinst-*.img.xz
+/debian-pi-netinst-*.img.bz2
