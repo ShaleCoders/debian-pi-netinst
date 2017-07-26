@@ -64,7 +64,7 @@ function create_tempfile {
     local tmp_ptrn="/tmp/$(basename "${0}").${$}"
     if type mktemp &> /dev/null; then
         mktemp 2> /dev/null || \
-            mktemp -t raspbian-ua-netinst 2> /dev/null || \
+            mktemp -t debian-pi-netinst 2> /dev/null || \
             touch_tempfile "${tmp_ptrn}"
     else
         if type tempfile &> /dev/null; then
@@ -592,7 +592,7 @@ if [ -d config ] ; then
     cp -r config/* bootfs/config
 fi
 
-ZIPFILE=raspbian-ua-netinst-`date +%Y%m%d`-git`git rev-parse --short @{0}`.zip
+ZIPFILE=debian-pi-netinst-`date +%Y%m%d`-git`git rev-parse --short @{0}`.zip
 rm -f $ZIPFILE
 
 cd bootfs && zip -r -9 ../$ZIPFILE *; cd ..
