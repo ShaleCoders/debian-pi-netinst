@@ -104,25 +104,48 @@ Easiest way to do this is to first _xzcat_ the image to your SD card and then mo
 The format of the file and the current defaults:
 
     preset=minimal
-    packages= # comma separated list of extra packages
+    packages=
     mirror=http://mirrordirector.raspbian.org/raspbian/
-    release=wheezy
+    release=jessie
     hostname=pi
+    boot_volume_label=
+    domainname=
     rootpw=raspbian
+    root_ssh_pubkey=
+    disable_root=
+    username=
+    userpw=
+    user_ssh_pubkey=
+    user_is_admin=yes
     cdebootstrap_cmdline=
-    bootsize=+64M # /boot partition size as given to fdisk
-    rootsize=     # / partition size, leave empty to use all free space
+    bootsize=+128M
+    bootoffset=8192
+    rootsize=
     timeserver=time.nist.gov
-    ip_addr=dhcp # Put static IP here 
-    ip_netmask=0.0.0.0
-    ip_broadcast=0.0.0.0
-    ip_gateway=0.0.0.0
-    ip_nameservers= # nameserver here
-    online_config= # URL to extra config that will be executed after installer-config.txt
-    usbroot= # set to 1 to install to first USB disk
+    timezone=Etc/UTC
+    locales=
+    system_default_locale=
+    disable_predictable_nin=1
+    ifname=eth0
+    ip4_addr=dhcp
+    ip4_prefixlength=0
+    ip4_gateway=0.0.0.0
+    ip4_nameservers=
+    ip6_addr=disable
+    ip6_prefixlength=0
+    ip6_gateway=auto
+    ip6_nameservers=auto
+    drivers_to_load=
+    online_config=
+    usbroot=
     cmdline="dwc_otg.lpm_enable=0 console=ttyAMA0,115200 kgdboc=ttyAMA0,115200 console=tty1 elevator=deadline"
     rootfstype=ext4
-    rootfs_mkfs_options=
+    final_action=reboot
+    hardware_versions=detect
+    hwrng_support=1
+    enable_watchdog=0
+    enable_uart=0
+    gpu_mem=16
 
 All of the configuration options should be clear. You can override any of these in your _installer-config.txt_. The time server is only used during installation and is for _rdate_ which doesn't support the NTP protocol.
 
