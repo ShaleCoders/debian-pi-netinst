@@ -50,6 +50,7 @@ gpu_mem=16
 # these shouldn't really be changed unless auto-detection fails
 bootdev=/dev/mmcblk0
 bootpartition=/dev/mmcblk0p1
+swappartition=/dev/mmcblk0p3
 rootdev=/dev/mmcblk0
 rootpartition=
 
@@ -202,6 +203,8 @@ case $cpu_revision in
 esac
 
 echo ""
+echo ""
+echo ""
 echo "================================================="
 echo "debian-pi-netinst"
 echo "================================================="
@@ -211,6 +214,11 @@ echo "Running on Raspberry Pi version ${rpi_hardware_version}"
 echo "================================================="
 echo "https://github.com/twinusers/debian-pi-netinst/"
 echo "================================================="
+echo "IRC: irc.chatfreedom.us"
+echo "Channel: #debian-pi-netinst"
+echo "Port: 6667"
+echo
+echo
 sleep 10
 
 echo -n "Starting HWRNG "
@@ -1278,6 +1286,17 @@ echo "OK"
 if [ "$kernel_module" = true ] ; then
   echo -n "Installing bootloader package (=firmware)... "
   chroot /rootfs /usr/bin/apt-get -y install raspberrypi-bootloader-nokernel &>/dev/null
+  if [ $? -eq 0 ]; then
+    echo "OK"
+  else
+    echo "FAILED !"
+  fi
+fi
+
+# install firmware for wireless chipset (RPi 3 and Zero W)
+if [ "$ifname" != "eth0" ]; then
+  echo -n "Installing firmware for Broadcom wireless network cards... "
+  chroot /rootfs /usr/bin/apt-get -y install firmware-brcm80211 &>/dev/null
   if [ $? -eq 0 ]; then
     echo "OK"
   else
