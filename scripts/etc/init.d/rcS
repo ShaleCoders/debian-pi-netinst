@@ -763,8 +763,8 @@ echo "  hardware_versions = $hardware_versions"
 echo "  gpu_mem = $gpu_mem"
 echo
 
-echo -n "Waiting 5 seconds"
-for i in $(seq 1 5); do
+echo -n "Waiting 10 seconds"
+for i in $(seq 1 10); do
     echo -n "."
     sleep 1
 done
