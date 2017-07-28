@@ -50,7 +50,6 @@ gpu_mem=16
 # these shouldn't really be changed unless auto-detection fails
 bootdev=/dev/mmcblk0
 bootpartition=/dev/mmcblk0p1
-swappartition=/dev/mmcblk0p3
 rootdev=/dev/mmcblk0
 rootpartition=
 
