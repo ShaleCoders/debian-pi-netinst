@@ -1428,6 +1428,9 @@ else
 fi
 echo "OK"
 
+echo -n "Updating kernel... "
+chroot /rootfs /usr/bin/apt-get -y install raspberrypi-bootloader &>/dev/null
+echo "OK"
 
 ENDTIME=$(date +%s)
 DURATION=$((ENDTIME - REAL_STARTTIME))
@@ -1464,4 +1467,3 @@ for i in $(seq 5 -1 1); do
 done
 echo " now"
 ${final_action}
-
